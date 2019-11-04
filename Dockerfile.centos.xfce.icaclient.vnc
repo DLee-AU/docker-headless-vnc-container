@@ -1,0 +1,25 @@
+# This Dockerfile is used to build an headles vnc image based on Centos
+
+## Custom Dockerfile
+FROM consol/centos-xfce-vnc
+ENV REFRESHED_AT 2019-11-04
+
+# Switch to root user to install additional software
+USER 0
+
+# ### Add all install scripts for further steps
+ADD ./src/common/install/ $INST_SCRIPTS/
+ADD ./src/centos/install/ $INST_SCRIPTS/
+RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
+
+#RUN yum --skip-broken localinstall icaclient.rpm;
+# Get ICA Client
+RUN $INST_SCRIPTS/geticaclient.sh
+
+# Install ICA Client
+RUN $INST_SCRIPTS/icaclient.sh
+
+RUN rm -rf /var/cache/yum
+
+## switch back to default user
+USER 1000
