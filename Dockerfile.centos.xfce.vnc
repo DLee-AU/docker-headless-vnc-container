@@ -2,8 +2,8 @@
 
 FROM centos:7
 
-MAINTAINER Simon Hofmann "simon.hofmann@consol.de"
-ENV REFRESHED_AT 2019-11-04
+MAINTAINER Dustin Lee "dp_lee@hotmail.com"
+ENV REFRESHED_AT 2019-11-05
 
 LABEL io.k8s.description="Headless VNC Container with Xfce window manager, firefox and chromium" \
       io.k8s.display-name="Headless VNC Container based on Centos" \
@@ -20,11 +20,11 @@ ENV DISPLAY=:1 \
 EXPOSE $VNC_PORT $NO_VNC_PORT
 
 ### Envrionment config
-ENV HOME=/headless \
+ENV HOME=/home/headless \
     TERM=xterm \
     STARTUPDIR=/dockerstartup \
-    INST_SCRIPTS=/headless/install \
-    NO_VNC_HOME=/headless/noVNC \
+    INST_SCRIPTS=/home/headless/install \
+    NO_VNC_HOME=/home/headless/noVNC \
     VNC_COL_DEPTH=24 \
     VNC_RESOLUTION=1280x1024 \
     VNC_PW=vncpassword \

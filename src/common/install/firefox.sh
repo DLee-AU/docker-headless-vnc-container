@@ -38,7 +38,8 @@ function instFF() {
     exit -1
 }
 
-instFF '45.9.0esr' '/usr/lib/firefox'
+#instFF '45.9.0esr' '/usr/lib/firefox'
+instFF '68.2.0esr' '/usr/lib/firefox'
 
 #yum -y install firefox-45.7.0-2.el7.centos
 #yum -y install firefox
